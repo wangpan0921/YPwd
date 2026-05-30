@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 基础主题 -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
+<!--    <style name="Theme.YPwd" parent="android:Theme.Material.Light.NoActionBar" />-->
+</resources>

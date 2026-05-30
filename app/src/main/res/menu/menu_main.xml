@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_export_excel"
+        android:orderInCategory="100"
+        android:title="导出Excel"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_send_email"
+        android:orderInCategory="101"
+        android:title="发送到邮箱"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_import_excel"
+        android:orderInCategory="102"
+        android:title="从Excel导入"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="103"
+        android:title="退出登录"
+        app:showAsAction="never" />
+</menu>
