@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- 基础主题 -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
-<!--    <style name="Theme.YPwd" parent="android:Theme.Material.Light.NoActionBar" />-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 应用主主题：Material DayNight，带品牌色与自定义组件样式 -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 主色 -->
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryVariant">@color/brand_primary_dark</item>
+        <item name="colorOnPrimary">@color/on_brand</item>
+        <item name="colorSecondary">@color/brand_secondary</item>
+        <item name="colorSecondaryVariant">@color/brand_secondary</item>
+        <item name="colorOnSecondary">@color/on_brand</item>
+
+        <!-- 表面 -->
+        <item name="android:colorBackground">@color/bg</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorError">@color/danger</item>
+        <item name="colorOnError">@color/on_brand</item>
+
+        <!-- 系统栏 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">?android:attr/colorBackground</item>
+
+        <!-- 组件默认样式 -->
+        <item name="materialCardViewStyle">@style/YPwd.CardView</item>
+        <item name="materialButtonStyle">@style/YPwd.Button.Filled</item>
+        <item name="borderlessButtonStyle">@style/YPwd.Button.Text</item>
+        <item name="textInputStyle">@style/YPwd.TextInput</item>
+        <item name="floatingActionButtonStyle">@style/YPwd.Fab</item>
+        <item name="extendedFloatingActionButtonStyle">@style/YPwd.ExtendedFab</item>
+        <item name="toolbarStyle">@style/YPwd.Toolbar</item>
+        <item name="chipStyle">@style/YPwd.Chip</item>
+
+        <!-- 字体渲染更锐利 -->
+        <item name="android:textAppearance">@style/YPwd.Text.Body</item>
+    </style>
+
+    <!-- 启动/登录主题：使用渐变 window 背景 -->
+    <style name="AppTheme.Login" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/bg_login_gradient</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 </resources>

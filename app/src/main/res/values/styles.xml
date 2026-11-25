@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Toolbar：透明背景、深色文本 -->
+    <style name="YPwd.Toolbar" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="titleTextAppearance">@style/YPwd.Text.Title</item>
+        <item name="titleTextColor">@color/on_surface</item>
+        <item name="subtitleTextColor">@color/on_surface_muted</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <!-- 卡片 -->
+    <style name="YPwd.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/outline</item>
+        <item name="rippleColor">@color/brand_primary_light</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- 卡片：带阴影 -->
+    <style name="YPwd.CardView.Elevated" parent="YPwd.CardView">
+        <item name="cardElevation">4dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- 按钮：主按钮（填充） -->
+    <style name="YPwd.Button.Filled" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="backgroundTint">@color/brand_primary</item>
+        <item name="rippleColor">#33FFFFFF</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:textColor">@color/on_brand</item>
+    </style>
+
+    <!-- 按钮：描边 -->
+    <style name="YPwd.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/outline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="rippleColor">@color/brand_primary_light</item>
+    </style>
+
+    <!-- 按钮：文字按钮 -->
+    <style name="YPwd.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minHeight">44dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/brand_primary</item>
+        <item name="rippleColor">@color/brand_primary_light</item>
+    </style>
+
+    <!-- 输入框：OutlinedBox -->
+    <style name="YPwd.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="boxStrokeColor">@color/text_input_stroke</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1.5dp</item>
+        <item name="hintTextColor">@color/brand_primary</item>
+        <item name="android:textColorHint">@color/on_surface_faint</item>
+        <item name="startIconTint">@color/on_surface_muted</item>
+        <item name="endIconTint">@color/on_surface_muted</item>
+        <item name="boxBackgroundColor">@color/surface</item>
+    </style>
+
+    <!-- 输入框：登录卡片内透明 -->
+    <style name="YPwd.TextInput.OnCard" parent="YPwd.TextInput">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+    </style>
+
+    <!-- FAB -->
+    <style name="YPwd.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/brand_primary</item>
+        <item name="tint">@color/on_brand</item>
+        <item name="rippleColor">#33FFFFFF</item>
+        <item name="elevation">6dp</item>
+        <item name="borderWidth">0dp</item>
+    </style>
+
+    <style name="YPwd.ExtendedFab" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="backgroundTint">@color/brand_primary</item>
+        <item name="iconTint">@color/on_brand</item>
+        <item name="android:textColor">@color/on_brand</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Chip -->
+    <style name="YPwd.Chip" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipBackgroundColor">@color/brand_primary_light</item>
+        <item name="android:textColor">@color/brand_primary</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="chipMinHeight">28dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- 文本层级 -->
+    <style name="YPwd.Text.Display" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="YPwd.Text.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="YPwd.Text.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="YPwd.Text.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="YPwd.Text.BodyMuted" parent="YPwd.Text.Body">
+        <item name="android:textColor">@color/on_surface_muted</item>
+    </style>
+
+    <style name="YPwd.Text.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/on_surface_muted</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+
+    <style name="YPwd.Text.Label" parent="YPwd.Text.Caption">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/on_surface_muted</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <style name="YPwd.Text.Mono" parent="YPwd.Text.Body">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+</resources>

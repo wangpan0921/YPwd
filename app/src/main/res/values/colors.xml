@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="red">#FFFF0000</color>
-    <color name="search_border">#2196F3</color>
+    <!-- 品牌主色 -->
+    <color name="brand_primary">#5B4FE0</color>
+    <color name="brand_primary_dark">#4338CA</color>
+    <color name="brand_primary_light">#EEF0FF</color>
+    <color name="brand_secondary">#7C3AED</color>
+    <color name="brand_accent">#38BDF8</color>
+
+    <!-- 渐变 -->
+    <color name="gradient_start">#6366F1</color>
+    <color name="gradient_mid">#7C3AED</color>
+    <color name="gradient_end">#A855F7</color>
+    <color name="gradient_subtle_start">#EEF2FF</color>
+    <color name="gradient_subtle_end">#F5F3FF</color>
+    <color name="gradient_dark_start">#312E81</color>
+    <color name="gradient_dark_end">#581C87</color>
+
+    <!-- 中性色（浅色） -->
+    <color name="bg">#F6F7FB</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F3F4F8</color>
+    <color name="surface_elevated">#FFFFFF</color>
+    <color name="divider">#E5E7EB</color>
+    <color name="outline">#E2E4EC</color>
+    <color name="on_surface">#101127</color>
+    <color name="on_surface_muted">#5B6273</color>
+    <color name="on_surface_faint">#9CA3AF</color>
+    <color name="on_brand">#FFFFFF</color>
+    <color name="on_brand_muted">#E8E4FF</color>
+
+    <!-- 功能色 -->
+    <color name="success">#10B981</color>
+    <color name="warning">#F59E0B</color>
+    <color name="danger">#EF4444</color>
+    <color name="info">#0EA5E9</color>
+
+    <!-- 头像色板 -->
+    <color name="avatar_1">#6366F1</color>
+    <color name="avatar_2">#F59E0B</color>
+    <color name="avatar_3">#10B981</color>
+    <color name="avatar_4">#EF4444</color>
+    <color name="avatar_5">#0EA5E9</color>
+    <color name="avatar_6">#A855F7</color>
+    <color name="avatar_7">#EC4899</color>
+    <color name="avatar_8">#14B8A6</color>
+
+    <!-- 兼容旧引用 -->
+    <color name="red">#EF4444</color>
+    <color name="search_border">#5B4FE0</color>
+    <color name="purple_200">#B4A9FF</color>
+    <color name="purple_500">#5B4FE0</color>
+    <color name="purple_700">#4338CA</color>
+    <color name="teal_200">#8BE9D7</color>
+    <color name="teal_700">#0EA488</color>
+    <color name="black">#101127</color>
+    <color name="white">#FFFFFF</color>
 </resources>

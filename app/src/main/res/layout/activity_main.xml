@@ -2,144 +2,199 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:background="?android:attr/colorBackground"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <!-- 新增的 Toolbar -->
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/top_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:title="密码管理器" />
 
-        <!-- 搜索框容器 -->
+        <!-- 顶部渐变区：Toolbar + 大标题 + 说明 -->
+        <LinearLayout
+            android:id="@+id/header_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_header_gradient"
+            android:paddingTop="12dp"
+            android:paddingBottom="52dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+                app:navigationIcon="@null"
+                app:title=""
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_vault"
+                    android:textStyle="bold"
+                    android:textSize="28sp"
+                    android:textColor="@android:color/white"
+                    android:letterSpacing="0.01"/>
+
+                <TextView
+                    android:id="@+id/tv_header_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/app_tagline"
+                    android:textSize="13sp"
+                    android:textColor="#CCFFFFFF"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 搜索卡片（半悬浮在渐变底部） -->
         <LinearLayout
             android:id="@+id/search_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:orientation="horizontal"
-            android:padding="12dp">
-<!--            android:background="?attr/colorSurface"-->
-<!--            app:elevation="2dp"-->
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_search_pill"
+            android:elevation="4dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="-28dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search_outline"
+                android:contentDescription="@null"
+                app:tint="@color/on_surface_muted"/>
+
+            <EditText
+                android:id="@+id/search_box"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:boxBackgroundColor="@android:color/transparent"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusBottomEnd="20dp">
-                <!--                app:startIconDrawable="@drawable/ic_search"-->
+                android:layout_marginStart="12dp"
+                android:background="@null"
+                android:hint="@string/search_vault"
+                android:textColor="@color/on_surface"
+                android:textColorHint="@color/on_surface_faint"
+                android:textSize="15sp"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/search_box"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="搜索密码..."
-                    android:inputType="text"
-                    android:imeOptions="actionSearch"
-                    android:maxLines="1" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <ImageButton
                 android:id="@+id/btn_clear_search"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_close"
-                app:backgroundTint="?attr/colorSurface"
-                app:tint="?attr/colorOnSurface"
-                android:visibility="gone" />
-
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_close_vector"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cancel"
+                android:visibility="gone"
+                app:tint="@color/on_surface_muted"/>
         </LinearLayout>
 
         <!-- 搜索结果提示 -->
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/search_result_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textSize="14sp"
-            android:visibility="gone"
-            android:gravity="center"
-            style="@style/TextAppearance.MaterialComponents.Caption" />
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="4dp"
+            android:textSize="12sp"
+            android:textColor="@color/on_surface_muted"
+            android:visibility="gone"/>
 
-        <!-- 进度条 -->
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone" />
-
-        <!-- 列表 -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <!-- 列表与空状态容器 -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:clipToPadding="false"
-            android:paddingBottom="80dp" />
+            android:paddingTop="12dp">
 
-        <!-- 空状态 -->
-        <LinearLayout
-            android:id="@+id/empty_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="40dp"
-            android:visibility="gone">
-
-
-            <!--                android:tint="?attr/colorOnSurface"-->
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_empty_password"
-                android:contentDescription="空状态" />
-
-            <com.google.android.material.textview.MaterialTextView
+            <ProgressBar
+                android:id="@+id/progress_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="还没有保存任何密码"
-                android:textSize="18sp"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/brand_primary"
+                android:visibility="gone"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="点击右下角 + 号添加"
-                android:textSize="14sp"
-                style="@style/TextAppearance.MaterialComponents.Body2" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="112dp"
+                android:scrollbars="none"/>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="40dp"
+                android:visibility="gone">
 
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_empty_vault"
+                    android:contentDescription="@null"/>
+
+                <TextView
+                    android:id="@+id/empty_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/empty_title"
+                    android:textAppearance="@style/YPwd.Text.Subtitle"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/empty_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/empty_subtitle"
+                    android:textAppearance="@style/YPwd.Text.BodyMuted"/>
+            </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
 
-    <!-- 添加按钮 -->
-<!--    android:src="@drawable/ic_add"-->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <!-- 新增按钮（Extended FAB） -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab"
+        style="@style/YPwd.ExtendedFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="?attr/colorPrimary" />
+        android:layout_margin="20dp"
+        android:text="@string/add_password"
+        app:icon="@drawable/ic_add"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 品牌色（深色下偏亮） -->
+    <color name="brand_primary">#8B7CFF</color>
+    <color name="brand_primary_dark">#6E5FFA</color>
+    <color name="brand_primary_light">#231F3E</color>
+    <color name="brand_secondary">#A78BFA</color>
+
+    <!-- 中性色（深色） -->
+    <color name="bg">#0B0B13</color>
+    <color name="surface">#17171F</color>
+    <color name="surface_variant">#1F2030</color>
+    <color name="surface_elevated">#20212C</color>
+    <color name="divider">#2A2B3A</color>
+    <color name="outline">#303244</color>
+    <color name="on_surface">#ECECF2</color>
+    <color name="on_surface_muted">#A5A8B8</color>
+    <color name="on_surface_faint">#6A6D7E</color>
+
+    <!-- 功能色（深色下稍微柔和） -->
+    <color name="success">#34D399</color>
+    <color name="warning">#FBBF24</color>
+    <color name="danger">#F87171</color>
+    <color name="info">#38BDF8</color>
+
+    <!-- 渐变（深色模式） -->
+    <color name="gradient_start">#4338CA</color>
+    <color name="gradient_mid">#6D28D9</color>
+    <color name="gradient_end">#7C3AED</color>
+</resources>

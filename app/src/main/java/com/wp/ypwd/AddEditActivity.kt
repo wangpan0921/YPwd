@@ -1,18 +1,24 @@
 package com.wp.ypwd
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.wp.ypwd.R
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class AddEditActivity : AppCompatActivity() {
-    private lateinit var etAccount: EditText
-    private lateinit var etPassword: EditText
-    private lateinit var etHint: EditText
-    private lateinit var btnSave: Button
+    private lateinit var etAccount: TextInputEditText
+    private lateinit var etPassword: TextInputEditText
+    private lateinit var etHint: TextInputEditText
+    private lateinit var tilAccount: TextInputLayout
+    private lateinit var tilPassword: TextInputLayout
+    private lateinit var btnSave: MaterialButton
+    private lateinit var btnCancel: MaterialButton
+    private lateinit var toolbar: MaterialToolbar
+    private lateinit var tvSubtitle: TextView
     private lateinit var dbHelper: DatabaseHelper
     private lateinit var masterPassword: String
     private var currentItem: PasswordItem? = null
@@ -22,37 +28,60 @@ class AddEditActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_edit)
 
         masterPassword = intent.getStringExtra("master_password") ?: ""
-        currentItem = intent.getParcelableExtra("item")
+        @Suppress("DEPRECATION")
+        currentItem = intent.getSerializableExtra("item") as? PasswordItem
 
         dbHelper = DatabaseHelper(this)
+
+        toolbar = findViewById(R.id.top_app_bar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        toolbar.setNavigationOnClickListener { finish() }
 
         etAccount = findViewById(R.id.et_account)
         etPassword = findViewById(R.id.et_password)
         etHint = findViewById(R.id.et_hint)
+        tilAccount = findViewById(R.id.til_account)
+        tilPassword = findViewById(R.id.til_password)
         btnSave = findViewById(R.id.btn_save)
+        btnCancel = findViewById(R.id.btn_cancel)
+        tvSubtitle = findViewById(R.id.tv_subtitle)
 
-        // 如果是编辑模式，填充数据
         currentItem?.let { item ->
-            title = "编辑密码"
+            toolbar.title = getString(R.string.title_edit)
+            tvSubtitle.setText(R.string.subtitle_edit)
             etAccount.setText(item.account)
             etPassword.setText(EncryptionUtils.decrypt(item.password, masterPassword))
             etHint.setText(item.hint)
         } ?: run {
-            title = "添加密码"
+            toolbar.title = getString(R.string.title_add)
+            tvSubtitle.setText(R.string.subtitle_add)
         }
 
-        btnSave.setOnClickListener {
-            savePassword()
-        }
+        btnSave.setOnClickListener { savePassword() }
+        btnCancel.setOnClickListener { finish() }
     }
 
     private fun savePassword() {
-        val account = etAccount.text.toString().trim()
-        val password = etPassword.text.toString().trim()
-        val hint = etHint.text.toString().trim()
+        val account = etAccount.text?.toString()?.trim().orEmpty()
+        val password = etPassword.text?.toString()?.trim().orEmpty()
+        val hint = etHint.text?.toString()?.trim().orEmpty()
 
-        if (account.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "账户和密码不能为空", Toast.LENGTH_SHORT).show()
+        var hasError = false
+        if (account.isEmpty()) {
+            tilAccount.error = getString(R.string.hint_account)
+            hasError = true
+        } else {
+            tilAccount.error = null
+        }
+        if (password.isEmpty()) {
+            tilPassword.error = getString(R.string.hint_password)
+            hasError = true
+        } else {
+            tilPassword.error = null
+        }
+        if (hasError) {
+            Toast.makeText(this, R.string.validate_empty, Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -62,7 +91,6 @@ class AddEditActivity : AppCompatActivity() {
         val item = currentItem ?: PasswordItem(0, account, encryptedPassword, hint)
 
         if (currentItem == null) {
-            // 添加新记录
             val id = dbHelper.addPasswordItem(item)
             if (id != -1L) {
                 Toast.makeText(this, "添加成功", Toast.LENGTH_SHORT).show()
@@ -72,7 +100,6 @@ class AddEditActivity : AppCompatActivity() {
                 Toast.makeText(this, "添加失败", Toast.LENGTH_SHORT).show()
             }
         } else {
-            // 更新记录
             item.account = account
             item.password = encryptedPassword
             item.hint = hint
@@ -87,4 +114,3 @@ class AddEditActivity : AppCompatActivity() {
         }
     }
 }
-    
